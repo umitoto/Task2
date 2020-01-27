@@ -1,54 +1,51 @@
 # ロボットシステム学　課題2
  **概要**
  
- Raspberry piを用いてLEDを点灯、制御するデバイスドライバ及びプログラム。
- echoコマンドによってLEDを常時点灯及び消灯させます。
- また、timer.shファイルを実行する事で入力した数の秒数点灯し、その後消灯します。
+ Raspberry piにROSを導入し、パブリッシャから送られたコマンドによってサブスクライバがGPIOピンに指令を送り、LEDを点灯及び消灯させるノードを作成しました。
+ "1"を送ると点灯し、"0"を送ると消灯します。
  
 # デモ映像
  
-URL：https://youtu.be/ygsqqd6A4mg
+URL：
  
 # 要件
 ### 環境
 Raspberry Pi Model 3B   
-OS:raspbian
+OS:Ubuntu Mate 18.04
 
 ### ピン設定
-GPIO25: 22番ピン  
-GND: 39番ピン
+GPIO14: 8番ピン  
+GND: 6番ピン
 
-> アノード22番ピンへ
- カソードを
- 39番ピン（GND）へ接続する。  
+> アノード8番ピンへ
+ カソードを番ピン（GND）へ接続する。  
  長時間点灯させる場合は抵抗（200〜300Ω）を繋ぐ。
  
  
 # Installation/Usage
  
-    $ git clone https://github.com/umitoto/Task1.git  
+    $ git clone https://github.com/umitoto/Task2.git  
 > ↑githubよりコードを入手。
 
-    $ cd Task1  
+    $ cd Task2/mypkg/scripts/
 > ↑入手したコードのディレクトリへ移動。
 
-    $ make  
-    $ sudo insmod myled.ko
-    $ sudo chmod 666 /dev/myled0
-> ↑カーネルモジュールをロード。
+    $ chmod +x homework_pub.py
+    $ chmod +x homework_sub.py
+    $ cd ~/catkin_ws
+    $ catkin_make 
+    $ sourse ~/catkin_ws/devel/setup.bash
+    $ roscore 
+    $ rosrun mypkg homework_pub.py
+    $ rosrun mypkg homework_sub.py
+> ↑権限付与とメイク及び実行
 
-    $ sh timer.sh
-> ↑LEDが入力された数字の秒数点灯する。
-    
-    $ sudo echo 1 > /dev/myled0
+    $ command -> 1
 > ↑LEDが点灯する。
 
-    $ sudo echo 0 > /dev/myled0
+    $ command -> 0
 > ↑LEDが消灯する。
 
-    $ sudo rmmod myled.ko
-> ↑カーネルモジュールをアンロード。
- 
 # Licenses
 This is under [GNU license]<http://www.gnu.org/licenses/>.
  
