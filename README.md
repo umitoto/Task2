@@ -12,14 +12,14 @@ URL：
 ### 環境
 Raspberry Pi Model 3B   
 OS:Ubuntu Mate 18.04
+ROS:melodic
 
 ### ピン設定
 GPIO14: 8番ピン  
 GND: 6番ピン
 
 > アノード8番ピンへ
- カソードを番ピン（GND）へ接続する。  
- 長時間点灯させる場合は抵抗（200〜300Ω）を繋ぐ。
+ カソードを番ピン（GND）へ接続する。
  
  
 # Installation/Usage
