@@ -11,7 +11,7 @@ URL：https://youtu.be/KiGdCz0QhMk
 # 要件
 ### 環境
 Raspberry Pi Model 3B  
-OS:Ubuntu Mate 18.04 
+OS:Ubuntu Mate 18.04
 ROS:melodic
 
 ### ピン設定
